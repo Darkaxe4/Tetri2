@@ -198,5 +198,8 @@ FieldView::FieldView(Field& field):
 
 void FieldView::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
-	
+	states.transform *= getTransform();
+	target.draw(backgroundSprite, states);
+	target.draw(fieldSprite, states);
+	target.draw(tetraminoSprite, states);
 }

@@ -54,7 +54,7 @@ public:
 };
 
 
-class FieldView: public sf::Drawable
+class FieldView: public sf::Drawable, public sf::Transformable
 {
 private:
     Field* field;
@@ -72,7 +72,9 @@ private:
     sf::Vector2f fieldPosition{ 256.f, 64.f };
 
     sf::Sprite brick;
+    sf::Sprite tetraminoSprite;
     sf::Sprite fieldSprite;
+    sf::Sprite backgroundSprite;
 
     Tetramino* active;
     Tetramino* next;
