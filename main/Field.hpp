@@ -16,6 +16,11 @@ private:
     sf::Vector2<size_t> size{ size_t(19), size_t{29} };
 
     int currentScore{ 0 };
+
+    Tetramino active;
+    Tetramino next;
+    friend class FieldController;
+    friend class FieldView;
 public:
     Field();
 
@@ -35,6 +40,8 @@ public:
     // Inherited via I_JSONSerializable
     virtual json& to_json() override;
     virtual void from_json(json& json) override;
+    inline auto const& get_active() { return active; };
+    inline auto const& get_next() { return next; };
 };
 
 class FieldController
@@ -44,13 +51,10 @@ private:
     Tetramino* active;
     Tetramino* next;
 public:
-    FieldController(Field* field);
+    FieldController(Field& field);
 
     void move_active(int dx, int dy);
     void rotate_active();
-
-    inline auto const& get_active() { return *active; };
-    inline auto const& get_next() { return *next; };
 };
 
 
@@ -68,7 +72,7 @@ private:
 
     sf::Vector2f margin{ 16.f, 16.f };
     sf::Vector2i brickSize{ 32, 32 };
-    sf::Vector2i size{ 19, 29 };
+    sf::Vector2u size{ 19, 29 };
     sf::Vector2f fieldPosition{ 256.f, 64.f };
 
     sf::Sprite brick;
@@ -78,11 +82,16 @@ private:
 
     Tetramino* active;
     Tetramino* next;
-
 public:
     void prerender_field();
-    void prerender_tetramino(unsigned int type, Color color);
+    const sf::RenderTexture& prerender_tetramino(const Tetramino& tetramino);
     FieldView(Field& field);
+
+    void set_back_texture(std::string_view path);
+    void set_palette(std::string_view path);
+
+    void update_active(const sf::Vector2f& offset = {}, float rotation = 0.f);
+    void update();
 
     // Inherited via Drawable
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override;

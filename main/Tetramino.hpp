@@ -22,7 +22,7 @@ const int TetraminoTypes[7][4] =
 
 struct Tetramino
 {
-	Color color = yellow;
+	Color color;
 	sf::Vector2i blocks[4] = { {0, 0}, {0, 0}, {0, 0}, {0, 0} };
 
 	Tetramino();
@@ -32,5 +32,5 @@ struct Tetramino
 	void move(int dx, int dy);
 	void rotate();
 
-	static Tetramino* generate_tetramino();
+	void generate_tetramino();
 };

@@ -1,10 +1,9 @@
 #include "Includes.hpp"
 
 
-Field::Field()
+Field::Field():
+	active(), next()
 {
-	std::srand(std::time(nullptr));
-
 	cells.clear();
 	cells.resize(size.y);
 	for (auto y = 0; y < size.y; y++)
@@ -107,11 +106,9 @@ void Field::from_json(json& json)
 }
 
 
-FieldController::FieldController(Field* field):
-	field(field)
+FieldController::FieldController(Field& field):
+	field(&field), active(&field.active), next(&field.next)
 {
-	active = Tetramino::generate_tetramino();
-	next = Tetramino::generate_tetramino();
 }
 
 void FieldController::move_active(int dx, int dy)
@@ -130,9 +127,8 @@ void FieldController::move_active(int dx, int dy)
 	if (res == FILLEDCELL)
 	{
 		field->solidify(active);
-		delete active;
 		active = next;
-		next = Tetramino::generate_tetramino();
+		next->generate_tetramino();
 	}
 }
 
@@ -151,9 +147,8 @@ void FieldController::rotate_active()
 	if (res == FILLEDCELL)
 	{
 		field->solidify(active);
-		delete active;
 		active = next;
-		next = Tetramino::generate_tetramino();
+		next->generate_tetramino();
 	}
 }
 
@@ -170,7 +165,7 @@ void FieldView::prerender_field()
 			if (cells[row][column] == -1)
 				continue;
 			offset.x = brickSize.x * column;
-			brick.setPosition(fieldPosition + margin + offset);
+			brick.setPosition(margin + offset);
 			brick.setTextureRect(sf::IntRect{0 + cells[row][column] * brickSize.x, 0, brickSize.x, brickSize.y});
 			fieldPrerender.draw(brick);
 		}
@@ -178,28 +173,64 @@ void FieldView::prerender_field()
 	fieldPrerender.display();
 }
 
-void FieldView::prerender_tetramino(unsigned int type, Color color)
+const sf::RenderTexture& FieldView::prerender_tetramino(const Tetramino& tetramino)
 {
-	tetraminoPrerender.clear();
-	brick.setTextureRect(sf::IntRect{ 0 + color * brickSize.x, 0, brickSize.x, brickSize.y });
-	auto tetramino = TetraminoTypes[type];
+	tetraminoPrerender.clear(sf::Color::Transparent);
+	brick.setTextureRect(sf::IntRect{ 0 + tetramino.color * brickSize.x, 0, brickSize.x, brickSize.y });
 	for (auto i = size_t{ 0 }; i < 4; i++)
 	{
-		brick.setPosition(brickSize.x * (tetramino[i] % 2), brickSize.y * (tetramino[i] / 2));
+		brick.setPosition(brickSize.x * (tetramino.blocks[i].x), brickSize.y * (tetramino.blocks[i].y));
 		tetraminoPrerender.draw(brick);
 	}
 	tetraminoPrerender.display();
+	return tetraminoPrerender;
 }
 
 FieldView::FieldView(Field& field):
-	field(&field), brick(),
-	active(nullptr), next(nullptr)
-{}
+	field(&field), brick(), fieldPrerender(),
+	tetraminoPrerender(),
+	active(&field.active), next(&field.next)
+{
+	fieldSprite.setPosition(margin);
+	fieldPrerender.create(brickSize.x * size.x, brickSize.y * size.y);
+	tetraminoPrerender.create(brickSize.x * 2u, brickSize.y * 4u);
+}
+
+void FieldView::set_back_texture(std::string_view path)
+{
+		backgroundTexture.loadFromFile(path.data());
+		backgroundSprite.setTexture(backgroundTexture);
+}
+
+void FieldView::set_palette(std::string_view path)
+{
+		brickPaletteTexture.loadFromFile(path.data());
+		brick.setTexture(brickPaletteTexture);
+}
+
+void FieldView::update_active(const sf::Vector2f& offset, float rotation)
+{
+	tetraminoSprite.move(offset);
+	tetraminoSprite.rotate(rotation);
+}
+
+void FieldView::update()
+{
+	prerender_field();
+	fieldTexture = fieldPrerender.getTexture();
+	tetraminoSprite.setTexture(tetraminoPrerender.getTexture());
+}
 
 void FieldView::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
 	states.transform *= getTransform();
 	target.draw(backgroundSprite, states);
+	auto shift = sf::Transform();
+	shift.translate(margin);
+	states.transform *= shift;
 	target.draw(fieldSprite, states);
+
 	target.draw(tetraminoSprite, states);
+
+
 }

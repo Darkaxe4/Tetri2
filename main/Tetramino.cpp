@@ -2,9 +2,11 @@
 
 Tetramino::Tetramino()
 {
+	generate_tetramino();
 }
 
-Tetramino::Tetramino(const int(&shape)[4])
+Tetramino::Tetramino(const int(&shape)[4]):
+	color(Color::blue)
 {
 	for (auto i = 0; i < 4; i++)
 	{
@@ -13,7 +15,8 @@ Tetramino::Tetramino(const int(&shape)[4])
 	}
 }
 
-Tetramino::Tetramino(const int(&shape)[4], sf::Vector2i pos)
+Tetramino::Tetramino(const int(&shape)[4], sf::Vector2i pos) :
+	color(Color::blue)
 {
 	for (auto i = 0; i < 4; i++)
 	{
@@ -43,13 +46,17 @@ void Tetramino::rotate()
 	}
 }
 
-Tetramino* Tetramino::generate_tetramino()
+void Tetramino::generate_tetramino()
 {
 	auto type = std::rand() % 7;
 	auto color = std::rand() % 5;
+	std::cout << "gen " << type << color << std::endl;
 
-	auto result = new Tetramino(TetraminoTypes[type], sf::Vector2i{ 0, 0 });
-	result->color = static_cast<Color>(color);
-	return result;
+	for (auto i = 0; i < 4; i++)
+	{
+		blocks[i].x = TetraminoTypes[type][i] % 2;
+		blocks[i].y = TetraminoTypes[type][i] / 2;
+	}
+	this->color = static_cast<Color>(color);
 }
 
