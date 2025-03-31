@@ -39,7 +39,7 @@ public:
 
     // Inherited via I_JSONSerializable
     virtual json& to_json() override;
-    virtual void from_json(json& json) override;
+    virtual void from_json(const json& json) override;
     inline auto const& get_active() { return active; };
     inline auto const& get_next() { return next; };
 };

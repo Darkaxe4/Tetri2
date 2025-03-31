@@ -95,12 +95,12 @@ void Field::clear()
 
 json& Field::to_json()
 {
-	auto data = json();
+	static auto data = json();
 	data["cells"] = cells;
-	return data;
+	return std::forward<json&>(data);
 }
 
-void Field::from_json(json& json)
+void Field::from_json(const json& json)
 {
 	cells = json["cells"];
 }

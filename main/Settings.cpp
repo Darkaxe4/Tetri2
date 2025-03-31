@@ -31,7 +31,7 @@ json& Settings::to_json()
 	return data;
 }
 
-void Settings::from_json(json& json)
+void Settings::from_json(const json& json)
 {
 	set_value(1u, json["music_volume"]);
 	set_value(2u, json["sfx_volume"]);

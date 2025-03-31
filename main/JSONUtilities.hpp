@@ -6,7 +6,7 @@ class I_JSONSerializable
 {
 public:
 	virtual json& to_json() = 0;
-	virtual void from_json(json& json) = 0;
+	virtual void from_json(const json& json) = 0;
 };
 
 class JSONWriter
