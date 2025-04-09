@@ -50,7 +50,6 @@ void Tetramino::generate_tetramino()
 {
 	auto type = std::rand() % 7;
 	auto color = std::rand() % 5;
-	std::cout << "gen " << type << color << std::endl;
 
 	for (auto i = 0; i < 4; i++)
 	{

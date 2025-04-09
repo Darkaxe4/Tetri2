@@ -166,7 +166,7 @@ void FieldView::prerender_field()
 				continue;
 			offset.x = brickSize.x * column;
 			brick.setPosition(margin + offset);
-			brick.setTextureRect(sf::IntRect{0 + cells[row][column] * brickSize.x, 0, brickSize.x, brickSize.y});
+			brick.setTextureRect(sf::IntRect{ {0 + cells[row][column] * brickSize.x, 0}, {brickSize.x, brickSize.y} });
 			fieldPrerender.draw(brick);
 		}
 	}
@@ -176,10 +176,10 @@ void FieldView::prerender_field()
 const sf::RenderTexture& FieldView::prerender_tetramino(const Tetramino& tetramino)
 {
 	tetraminoPrerender.clear(sf::Color::Transparent);
-	brick.setTextureRect(sf::IntRect{ 0 + tetramino.color * brickSize.x, 0, brickSize.x, brickSize.y });
+	brick.setTextureRect(sf::IntRect{ {0 + tetramino.color * brickSize.x, 0}, {brickSize.x, brickSize.y } });
 	for (auto i = size_t{ 0 }; i < 4; i++)
 	{
-		brick.setPosition(brickSize.x * (tetramino.blocks[i].x), brickSize.y * (tetramino.blocks[i].y));
+		brick.setPosition({ brickSize.x * (tetramino.blocks[i].x), brickSize.y * (tetramino.blocks[i].y) });
 		tetraminoPrerender.draw(brick);
 	}
 	tetraminoPrerender.display();
@@ -187,13 +187,12 @@ const sf::RenderTexture& FieldView::prerender_tetramino(const Tetramino& tetrami
 }
 
 FieldView::FieldView(Field& field):
-	field(&field), brick(), fieldPrerender(),
-	tetraminoPrerender(),
+	field(&field),
 	active(&field.active), next(&field.next)
 {
 	fieldSprite.setPosition(margin);
-	fieldPrerender.create(brickSize.x * size.x, brickSize.y * size.y);
-	tetraminoPrerender.create(brickSize.x * 2u, brickSize.y * 4u);
+	fieldPrerender.resize({ brickSize.x * size.x, brickSize.y * size.y });
+	tetraminoPrerender.resize({ brickSize.x * 2u, brickSize.y * 4u });
 }
 
 void FieldView::set_back_texture(std::string_view path)
@@ -211,7 +210,7 @@ void FieldView::set_palette(std::string_view path)
 void FieldView::update_active(const sf::Vector2f& offset, float rotation)
 {
 	tetraminoSprite.move(offset);
-	tetraminoSprite.rotate(rotation);
+	tetraminoSprite.rotate(sf::Angle(rotation));
 }
 
 void FieldView::update()

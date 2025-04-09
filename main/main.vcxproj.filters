@@ -47,6 +47,9 @@
     <Media Include="..\Assets\SFX\Place.wav">
       <Filter>Resource Files\SFX</Filter>
     </Media>
+    <Media Include="..\Assets\SFX\phonk-292971.mp3">
+      <Filter>Resource Files\SFX</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Assets\SFX\Background.ogg">
@@ -94,9 +97,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Field.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GUI.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -116,6 +116,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Field.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
