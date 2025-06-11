@@ -6,7 +6,7 @@ enum Color
 	green = 1,
 	red = 2,
 	blue = 3,
-	pink = 4,
+	//pink = 4,
 };
 
 const int TetraminoTypes[7][4] =

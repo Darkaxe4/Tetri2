@@ -1,20 +1,22 @@
 #include "Includes.hpp"
 
-void JSONWriter::write_json(I_JSONSerializable& object, const path& file)
+void JSONFileIO::write_json(I_JSONSerializable& object, const path& file)
 {
+	auto full_path = _path / file;
 	_stream.open(
-		_path += file,
+		full_path,
 		std::ios::out | std::ios::trunc
 	);
 	_stream << object.to_json();
 	_stream.close();
 }
 
-const json& JSONWriter::read_json(const path& file)
+json JSONFileIO::read_json(const path& file)
 {
+	auto full_path = _path / file;
 	_stream.open(
-		_path += file,
-		std::ios::in | std::ios::trunc
+		full_path,
+		std::ios::in
 	);
 	auto data = json::parse(_stream);
 	_stream.close();

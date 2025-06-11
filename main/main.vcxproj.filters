@@ -22,6 +22,24 @@
     <Filter Include="Resource Files\Fonts">
       <UniqueIdentifier>{98900ae5-fe9e-4862-8392-b2838afefaf2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\External">
+      <UniqueIdentifier>{a1102e77-8d57-4d86-96f9-540f050ba94d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\External">
+      <UniqueIdentifier>{edfd1c03-6a14-4e79-8700-23877e7a9070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\components">
+      <UniqueIdentifier>{3d1031ac-096a-49d2-8eb8-05f15f4c8a3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Scenes">
+      <UniqueIdentifier>{df346f99-d62d-4eb5-bd7b-f2cbffc69682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\GUI_forms">
+      <UniqueIdentifier>{03da73e9-ebd1-4bdc-a173-8d50fcfde1de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Managers">
+      <UniqueIdentifier>{05fbaff2-749b-433e-a4d8-96f7f5393459}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Textures\Background.png">
@@ -61,6 +79,9 @@
     <None Include="..\Assets\SFX\DJK-Dreamly-Soundscapes.ogg">
       <Filter>Resource Files\SFX</Filter>
     </None>
+    <None Include="..\3rd party\AK\SoundEngine\AkFilePackageLowLevelIO.inl">
+      <Filter>Source Files\External</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\Assets\Fonts\ka1.ttf">
@@ -83,17 +104,92 @@
     <ClInclude Include="Tetramino.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\3rd party\json.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Settings.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.hpp">
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkDefaultIOHookDeferred.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkDefaultLowLevelIODispatcher.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFileHelpers.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFileHelpersBase.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFileLocationBase.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFilePackage.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFilePackageLowLevelIO.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFilePackageLowLevelIODeferred.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFilePackageLUT.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkGeneratedSoundBanksResolver.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkJobWorkerMgr.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkMultipleFileLocation.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkPlatformProfilerHooks.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\stdafx.h">
+      <Filter>Source Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\entt.hpp">
+      <Filter>Header Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="..\3rd party\json.hpp">
+      <Filter>Header Files\External</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderComponent.hpp">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformComponent.hpp">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_MainMenu.hpp">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="scene_Gameplay.hpp">
+      <Filter>Header Files\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementComponent.hpp">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.hpp">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.hpp">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.hpp">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Keymap.hpp">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseScene.hpp">
+      <Filter>Header Files\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -121,5 +217,67 @@
     <ClCompile Include="Field.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BaseScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkDefaultIOHookDeferred.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkDefaultLowLevelIODispatcher.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkFileLocationBase.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkFilePackage.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkFilePackageLUT.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkGeneratedSoundBanksResolver.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkJobWorkerMgr.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkMultipleFileLocation.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkPlatformProfilerHooks.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkPlatformProfilerHookStubs.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\stdafx.cpp">
+      <Filter>Source Files\External</Filter>
+    </ClCompile>
+    <ClCompile Include="scene_MainMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scene_Gameplay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Keymap.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Assets\GUI_forms\menu.txt">
+      <Filter>Resource Files\GUI_forms</Filter>
+    </Text>
   </ItemGroup>
 </Project>

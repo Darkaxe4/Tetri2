@@ -21,7 +21,7 @@ void Settings::set_value(uint field, uint value)
 	}
 }
 
-json& Settings::to_json()
+json Settings::to_json() const
 {
 	auto data = json();
 	data["music_volume"] = _music_volume;

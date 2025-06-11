@@ -49,7 +49,7 @@ void Tetramino::rotate()
 void Tetramino::generate_tetramino()
 {
 	auto type = std::rand() % 7;
-	auto color = std::rand() % 5;
+	auto color = std::rand() % 4;
 
 	for (auto i = 0; i < 4; i++)
 	{

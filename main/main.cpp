@@ -9,49 +9,33 @@ enum class GameState
 
 int main()
 {
-    std::srand(std::time(0));
-    auto mode = sf::VideoMode({ 1920u, 1020u });
-    auto window = sf::RenderWindow(mode, "Tetri2");
+    Game::init();
+
+    // debug mappings - REMOVE LATER
+    Game::get_input_manager().bind_key(sf::Keyboard::Key::Escape, "pause");
+
+    // initialize gui handler
+    Game::get_scene_manager().init_gui(Game::get_window());
+
+    // register scenes
+    Game::get_scene_manager().register_scene(new MainMenu(), menu_scene);
+    Game::get_scene_manager().register_scene(new Gameplay(), gameplay_scene);
     
-    /*auto tf = Field();
-    auto tf_controller = FieldController(tf);
-    auto tf_view = FieldView(tf);
-    tf_view.set_back_texture(AssetPath + "/Textures/Field.png");
-    tf_view.set_palette(AssetPath + "/Textures/BlockAtlas.png");
-    tf_view.setPosition({ 200, 10 });
-    tf_view.prerender_tetramino(tf.get_active());
-    tf_view.update();*/
-    auto const delay = 1.f;
-    auto timer = 0.f;
-    auto globalClock = sf::Clock();
-    while (window.isOpen())
-    {
-        auto dt = globalClock.getElapsedTime().asSeconds();
-        timer += dt;
-        globalClock.restart();
-        while (const std::optional event = window.pollEvent()) {
-            if (event->is<sf::Event::Closed>())
-                window.close();
-            if (const auto* resized = event->getIf<sf::Event::Resized>())
-            {   
-                sf::FloatRect visibleArea({ 0, 0 }, sf::Vector2f{ resized->size });
-                window.setView(sf::View(visibleArea));
-            }
-        }
+    Game::get_sound_manager().load_soundbank(L"Mesopotamia_tracks.bnk");
 
-        if (timer >= delay)
-        {
-            /*tf_controller.move_active(0, 1);
-            tf_view.update_active({0.f, 32.f});*/
-            timer = 0.f;
-        }
+    Game::get_scene_manager().load_scene(menu_scene);
 
-        window.clear();
+    Game::main_loop();
+    Game::cleanup();
 
-        //window.draw(tf_view);
+    JSONFileIO f{};
+    Settings s{};
+    s.from_json(f.read_json("settings.json"));
 
-        window.display();
-    }
+    std::cout << "settings read";
+
+    f.write_json(s, "settings.json");
+
 	return 0;
 }
 

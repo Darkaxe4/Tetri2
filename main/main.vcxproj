@@ -31,6 +31,7 @@
     <Media Include="..\Assets\SFX\Place.wav" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\3rd party\AK\SoundEngine\AkFilePackageLowLevelIO.inl" />
     <None Include="..\Assets\SFX\7-done-menu.ogg" />
     <None Include="..\Assets\SFX\Background.ogg" />
     <None Include="..\Assets\SFX\DJK-Dreamly-Soundscapes.ogg" />
@@ -39,41 +40,101 @@
     <Font Include="..\Assets\Fonts\ka1.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkDefaultIOHookDeferred.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkDefaultLowLevelIODispatcher.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFileHelpers.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFileHelpersBase.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFileLocationBase.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFilePackage.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFilePackageLowLevelIO.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFilePackageLowLevelIODeferred.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkFilePackageLUT.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkGeneratedSoundBanksResolver.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkJobWorkerMgr.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkMultipleFileLocation.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\AkPlatformProfilerHooks.h" />
+    <ClInclude Include="..\3rd party\AK\SoundEngine\stdafx.h" />
+    <ClInclude Include="..\3rd party\entt.hpp" />
     <ClInclude Include="..\3rd party\json.hpp" />
     <ClInclude Include="Field.hpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
     </ClInclude>
-    <ClInclude Include="Game.hpp" />
+    <ClInclude Include="Game.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="GUI.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Includes.hpp" />
+    <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="JSONUtilities.hpp" />
-    <ClInclude Include="Renderer.hpp" />
+    <ClInclude Include="Keymap.hpp" />
+    <ClInclude Include="MovementComponent.hpp" />
+    <ClInclude Include="RenderComponent.hpp" />
+    <ClInclude Include="ResourceManager.hpp" />
+    <ClInclude Include="SceneManager.hpp" />
+    <ClInclude Include="scene_Gameplay.hpp" />
+    <ClInclude Include="scene_MainMenu.hpp" />
+    <ClInclude Include="BaseScene.hpp" />
     <ClInclude Include="Settings.hpp" />
+    <ClInclude Include="SoundManager.hpp" />
     <ClInclude Include="Tetramino.hpp" />
+    <ClInclude Include="TransformComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Field.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkDefaultIOHookDeferred.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkDefaultLowLevelIODispatcher.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkFileLocationBase.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkFilePackage.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkFilePackageLUT.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkGeneratedSoundBanksResolver.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkJobWorkerMgr.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkMultipleFileLocation.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkPlatformProfilerHooks.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\AkPlatformProfilerHookStubs.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="..\3rd party\AK\SoundEngine\stdafx.cpp" />
+    <ClCompile Include="Field.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="GUI.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="JSONUtilities.cpp" />
+    <ClCompile Include="Keymap.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Renderer.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="BaseScene.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="scene_Gameplay.cpp" />
+    <ClCompile Include="scene_MainMenu.cpp" />
     <ClCompile Include="Settings.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Tetramino.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Assets\GUI_forms\menu.txt" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -134,13 +195,14 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\libs\SFML-3.0.0_32_bit\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\repos\Child porn\SF_GE\Tetri2\3rd party;D:\tools\Wwise2024.1.3.8749\SDK\include;D:\libs\SFML-3.0.0_32_bit\include;%(AdditionalIncludeDirectories);D:\libs\TGUI\x32\TGUI-1.9\include\TGUI</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\libs\SFML-2.5.1_32_bit\lib;</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\libs\SFML-2.5.1_32_bit\lib;;D:\libs\TGUI\x32\TGUI-1.9\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies);AkConvolutionReverbFX.lib;AkFlangerFX.lib;AstoundsoundExpanderFX.lib;AkTremoloFX.lib;AkMemoryMgr.lib;AuroHeadphoneFX.lib;IOSONOProximityMixer.lib;AkMotionGenerator.lib;AkSineSource.lib;AkSoundSeedWind.lib;AkStereoDelayFX.lib;AkGuitarDistortionFX.lib;AkRumble.lib;AuroPannerMixer.lib;AkSoundEngine.lib;AkSilenceSource.lib;AkPeakLimiterFX.lib;McDSPLimiterFX.lib;iZTrashBoxModelerFX.lib;AkSoundSeedImpactFX.lib;AkRoomVerbFX.lib;iZTrashDelayFX.lib;McDSPFutzBoxFX.lib;AkParametricEQFX.lib;AstoundsoundFolddownFX.lib;AkToneSource.lib;AkMatrixReverbFX.lib;AkCompressorFX.lib;AkAudioInputSource.lib;AkMusicEngine.lib;AkSoundSeedWoosh.lib;CrankcaseAudioREVModelPlayerFX.lib;iZTrashMultibandDistortionFX.lib;iZHybridReverbFX.lib;AkPitchShifterFX.lib;iZTrashDynamicsFX.lib;iZTrashDistortionFX.lib;AstoundsoundRTIFX.lib;AkDelayFX.lib;AkGainFX.lib;AkVorbisDecoder.lib;AkMeterFX.lib;AstoundsoundShared.lib;iZTrashFiltersFX.lib;AkSynthOne.lib;AkMP3Source.lib;AkStreamMgr.lib;AkHarmonizerFX.lib;AkTimeStretchFX.lib;AkExpanderFX.lib;CommunicationCentral.lib;tgui-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -152,14 +214,16 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\libs\SFML-3.0.0_32_bit\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\tools\Wwise2024.1.3.8749\SDK\include;D:\libs\SFML-3.0.0_32_bit\include;%(AdditionalIncludeDirectories);D:\libs\TGUI\x32\TGUI-1.9\include\TGUI</AdditionalIncludeDirectories>
+      <PrecompiledHeader>Use</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies);AkConvolutionReverbFX.lib;AkFlangerFX.lib;AstoundsoundExpanderFX.lib;AkTremoloFX.lib;AkMemoryMgr.lib;AuroHeadphoneFX.lib;IOSONOProximityMixer.lib;AkMotionGenerator.lib;AkSineSource.lib;AkSoundSeedWind.lib;AkStereoDelayFX.lib;AkGuitarDistortionFX.lib;AkRumble.lib;AuroPannerMixer.lib;AkSoundEngine.lib;AkSilenceSource.lib;AkPeakLimiterFX.lib;McDSPLimiterFX.lib;iZTrashBoxModelerFX.lib;AkSoundSeedImpactFX.lib;AkRoomVerbFX.lib;iZTrashDelayFX.lib;McDSPFutzBoxFX.lib;AkParametricEQFX.lib;AstoundsoundFolddownFX.lib;AkToneSource.lib;AkMatrixReverbFX.lib;AkCompressorFX.lib;AkAudioInputSource.lib;AkMusicEngine.lib;AkSoundSeedWoosh.lib;CrankcaseAudioREVModelPlayerFX.lib;iZTrashMultibandDistortionFX.lib;iZHybridReverbFX.lib;AkPitchShifterFX.lib;iZTrashDynamicsFX.lib;iZTrashDistortionFX.lib;AstoundsoundRTIFX.lib;AkDelayFX.lib;AkGainFX.lib;AkVorbisDecoder.lib;AkMeterFX.lib;AstoundsoundShared.lib;iZTrashFiltersFX.lib;AkSynthOne.lib;AkMP3Source.lib;AkStreamMgr.lib;AkHarmonizerFX.lib;AkTimeStretchFX.lib;AkExpanderFX.lib;CommunicationCentral.lib;tgui.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>;D:\libs\TGUI\x32\TGUI-1.9\lib</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -169,13 +233,14 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\libs\SFML-3.0.0_64_bit\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\libs\TGUI\x64\TGUI-1.9\include;D:\repos\Child porn\SF_GE\Tetri2\3rd party\AK\SoundEngine;D:\repos\Child porn\SF_GE\Tetri2\3rd party;D:\tools\Wwise2024.1.3.8749\SDK\include;D:\libs\SFML-3.0.0_64_bit\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\libs\SFML-3.0.0_64_bit\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\tools\Wwise2024.1.3.8749\SDK\x64_vc170\Debug\lib;D:\libs\SFML-3.0.0_64_bit\lib;D:\libs\TGUI\x64\TGUI-1.9\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;sfml-audio-d.lib;sfml-network-d.lib;%(AdditionalDependencies);AkFlangerFX.lib;AkTremoloFX.lib;AkMemoryMgr.lib;AkSineSource.lib;AkStereoDelayFX.lib;AkGuitarDistortionFX.lib;AkSoundEngine.lib;AkSilenceSource.lib;AkPeakLimiterFX.lib;AkRoomVerbFX.lib;AkParametricEQFX.lib;AkToneSource.lib;AkMatrixReverbFX.lib;AkCompressorFX.lib;AkAudioInputSource.lib;AkMusicEngine.lib;AkPitchShifterFX.lib;AkDelayFX.lib;AkGainFX.lib;AkVorbisDecoder.lib;AkMeterFX.lib;AkStreamMgr.lib;AkHarmonizerFX.lib;AkTimeStretchFX.lib;AkExpanderFX.lib;CommunicationCentral.lib;tgui-d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -184,18 +249,19 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;AK_OPTIMIZED;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>D:\libs\SFML-3.0.0_64_bit\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\libs\TGUI\x64\TGUI-1.9\include;D:\repos\Child porn\SF_GE\Tetri2\3rd party\AK\SoundEngine;D:\repos\Child porn\SF_GE\Tetri2\3rd party;D:\tools\Wwise2024.1.3.8749\SDK\include;D:\libs\SFML-3.0.0_64_bit\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>D:\libs\SFML-3.0.0_64_bit\lib</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>D:\tools\Wwise2024.1.3.8749\SDK\x64_vc170\Release\lib;D:\libs\SFML-3.0.0_64_bit\lib;D:\libs\TGUI\x64\TGUI-1.9\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>sfml-graphics.lib;sfml-window.lib;sfml-system.lib;sfml-audio.lib;sfml-network.lib;sfml-main-s.lib;%(AdditionalDependencies);AkFlangerFX.lib;AkTremoloFX.lib;AkMemoryMgr.lib;AkSineSource.lib;AkStereoDelayFX.lib;AkGuitarDistortionFX.lib;AkSoundEngine.lib;AkSilenceSource.lib;AkPeakLimiterFX.lib;AkRoomVerbFX.lib;AkParametricEQFX.lib;AkToneSource.lib;AkMatrixReverbFX.lib;AkCompressorFX.lib;AkAudioInputSource.lib;AkMusicEngine.lib;AkPitchShifterFX.lib;AkDelayFX.lib;AkGainFX.lib;AkVorbisDecoder.lib;AkMeterFX.lib;AkStreamMgr.lib;AkHarmonizerFX.lib;AkTimeStretchFX.lib;AkExpanderFX.lib;tgui.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

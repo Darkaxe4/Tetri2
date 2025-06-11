@@ -18,7 +18,7 @@ public:
 	void set_value(uint field, uint value);
 
 	// Inherited via I_JSONSerializable
-	virtual json& to_json() override;
+	virtual json to_json() const override;
 
 	virtual void from_json(const json& json) override;
 

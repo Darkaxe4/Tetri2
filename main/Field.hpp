@@ -13,7 +13,7 @@ private:
     std::vector<std::vector<int>> cells{ {} };
 
     sf::Vector2i backup[4];
-    sf::Vector2<size_t> size{ size_t(19), size_t{29} };
+    sf::Vector2<size_t> size{ size_t(11), size_t{14} };
 
     int currentScore{ 0 };
 
@@ -24,21 +24,11 @@ private:
 public:
     Field();
 
-    boundCheckResult check_bounds(Tetramino* active, bool isVerticalTransform);
-
+    void clear();
     inline auto const& get_size() { return size; }
 
-    const std::vector<std::vector<int>>& get_cells();
-
-    int solidify(Tetramino* tetramino);
-    
-    void swapRows(int lowerRowIndex);
-    int clear_full_rows();
-
-    void clear();
-
     // Inherited via I_JSONSerializable
-    virtual json& to_json() override;
+    virtual json to_json() const override;
     virtual void from_json(const json& json) override;
     inline auto const& get_active() { return active; };
     inline auto const& get_next() { return next; };
@@ -55,6 +45,19 @@ public:
 
     void move_active(int dx, int dy);
     void rotate_active();
+
+    boundCheckResult check_bounds(Tetramino* active, bool isVerticalTransform);
+
+    inline void new_next(Tetramino&& tetramino) { *this->next = tetramino; }
+    inline void new_active(Tetramino&& tetramino) { *this->active = tetramino; }
+    inline void swap_active_next() { active, next = next, active; }
+
+    const std::vector<std::vector<int>>& get_cells();
+
+    int solidify(Tetramino* tetramino);
+
+    void swapRows(int lowerRowIndex);
+    int clear_full_rows();
 };
 
 
@@ -70,15 +73,15 @@ private:
     sf::RenderTexture fieldPrerender;
     sf::RenderTexture tetraminoPrerender;
 
-    sf::Vector2f margin{ 16.f, 16.f };
-    sf::Vector2i brickSize{ 32, 32 };
-    sf::Vector2u size{ 19, 29 };
+    sf::Vector2f margin{ 0.f, 0.f };
+    sf::Vector2i brickSize{ 64, 64 };
+    sf::Vector2u size{ 11, 14 };
     sf::Vector2f fieldPosition{ 256.f, 64.f };
 
-    sf::Sprite brick;
-    sf::Sprite tetraminoSprite;
-    sf::Sprite fieldSprite;
-    sf::Sprite backgroundSprite;
+    sf::Sprite* brick;
+    sf::Sprite* tetraminoSprite;
+    sf::Sprite* fieldSprite;
+    sf::Sprite* backgroundSprite;
 
     Tetramino* active;
     Tetramino* next;
