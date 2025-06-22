@@ -7,7 +7,10 @@ private:
 	static InputManager* input_manager;
 	static SceneManager* scene_manager;
 	static ResourceManager* resource_manager;
+	static SystemManager* system_manager;
 
+	// settings
+	static Settings* settings;
 	
 	// InputManager input_manager;
 	static sf::RenderWindow* game_window;
@@ -19,6 +22,8 @@ public:
 	static inline auto& get_input_manager() { return *input_manager; }
 	static inline auto& get_scene_manager() { return *scene_manager; }
 	static inline auto& get_resource_manager() { return *resource_manager; }
+
+	static inline auto& get_settings() { return *settings; }
 	
 	static void init();
 	static inline auto get_window() { return game_window; }

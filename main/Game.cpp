@@ -3,6 +3,9 @@ SoundManager* Game::sound_manager = nullptr;
 InputManager* Game::input_manager = nullptr;
 SceneManager* Game::scene_manager = nullptr;
 ResourceManager* Game::resource_manager = nullptr;
+SystemManager* Game::system_manager = nullptr;
+
+Settings* Game::settings = nullptr;
 
 sf::RenderWindow* Game::game_window = nullptr;
 sf::Clock* Game::main_clock = nullptr;
@@ -16,6 +19,7 @@ void Game::init()
     input_manager = new InputManager();
     scene_manager = new SceneManager();
     resource_manager = new ResourceManager();
+    system_manager = new SystemManager();
 
     game_window = new sf::RenderWindow(sf::VideoMode({ 1920, 1000 }), "Tetri2");
     main_clock = new sf::Clock{};
@@ -55,6 +59,8 @@ void Game::main_loop()
 
         game_window->clear();
 
+        system_manager->update_systems(dt);
+
         // render current scene
         scene_manager->get_current_scene()->render(*game_window, sf::RenderStates{});
 
@@ -72,6 +78,7 @@ void Game::cleanup()
     delete input_manager;
     delete scene_manager;
     delete resource_manager;
+    delete system_manager;
 
     delete game_window;
     delete main_clock;

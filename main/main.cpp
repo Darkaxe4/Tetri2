@@ -12,7 +12,7 @@ int main()
     Game::init();
 
     // debug mappings - REMOVE LATER
-    Game::get_input_manager().bind_key(sf::Keyboard::Key::Escape, "pause");
+    Game::get_input_manager().bind_key(sf::Keyboard::Key::Escape, "back");
 
     // initialize gui handler
     Game::get_scene_manager().init_gui(Game::get_window());
@@ -27,14 +27,6 @@ int main()
 
     Game::main_loop();
     Game::cleanup();
-
-    JSONFileIO f{};
-    Settings s{};
-    s.from_json(f.read_json("settings.json"));
-
-    std::cout << "settings read";
-
-    f.write_json(s, "settings.json");
 
 	return 0;
 }

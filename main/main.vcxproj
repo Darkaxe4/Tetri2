@@ -56,6 +56,7 @@
     <ClInclude Include="..\3rd party\AK\SoundEngine\stdafx.h" />
     <ClInclude Include="..\3rd party\entt.hpp" />
     <ClInclude Include="..\3rd party\json.hpp" />
+    <ClInclude Include="BaseSystem.hpp" />
     <ClInclude Include="Field.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
@@ -74,8 +75,6 @@
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="JSONUtilities.hpp" />
     <ClInclude Include="Keymap.hpp" />
-    <ClInclude Include="MovementComponent.hpp" />
-    <ClInclude Include="RenderComponent.hpp" />
     <ClInclude Include="ResourceManager.hpp" />
     <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="scene_Gameplay.hpp" />
@@ -83,8 +82,8 @@
     <ClInclude Include="BaseScene.hpp" />
     <ClInclude Include="Settings.hpp" />
     <ClInclude Include="SoundManager.hpp" />
+    <ClInclude Include="SystemManager.hpp" />
     <ClInclude Include="Tetramino.hpp" />
-    <ClInclude Include="TransformComponent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\3rd party\AK\SoundEngine\AkDefaultIOHookDeferred.cpp" />
@@ -101,6 +100,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\3rd party\AK\SoundEngine\stdafx.cpp" />
+    <ClCompile Include="BaseSystem.cpp" />
     <ClCompile Include="Field.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
@@ -111,18 +111,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="GUI.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="JSONUtilities.cpp" />
     <ClCompile Include="Keymap.cpp" />
     <ClCompile Include="main.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="BaseScene.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
@@ -131,6 +124,7 @@
     <ClCompile Include="scene_MainMenu.cpp" />
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="SystemManager.cpp" />
     <ClCompile Include="Tetramino.cpp" />
   </ItemGroup>
   <ItemGroup>

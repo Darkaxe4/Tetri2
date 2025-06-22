@@ -20,6 +20,8 @@ protected:
 	std::map<std::string, sf::Sprite*> sprite_registry;
 
 	tgui::Group::Ptr gui;
+
+	virtual void bind_input() = 0;
 public:
 	BaseScene(int index);
 	virtual bool load() = 0;
@@ -28,6 +30,7 @@ public:
 	inline auto get_gui() { return gui; }
 	virtual void unload() = 0;
 	void add_drawable(const sf::Drawable& drawable, int z_index);
+	inline auto& get_registry() { return entity_registry; }
 	virtual void update(sf::Time elapsed_time) = 0;
 	void render(sf::RenderTarget& target, const sf::RenderStates& states);
 	~BaseScene(); 

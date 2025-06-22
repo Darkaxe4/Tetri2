@@ -26,3 +26,9 @@ void InputManager::process_input(sf::Event event)
 	}
 }
 
+void InputManager::call_manually(std::string_view action)
+{
+	if (auto event_handler = event_handlers.find(action.data()); event_handler != event_handlers.end())
+		event_handler->second();
+}
+

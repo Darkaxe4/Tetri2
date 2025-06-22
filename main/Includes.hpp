@@ -39,27 +39,34 @@
 #include <functional>
 #include <iostream>
 
-// components
-#include "RenderComponent.hpp"
 
+#include "JSONUtilities.hpp"
+
+// components
+
+
+
+
+// systems
+#include "BaseSystem.hpp"
 
 #include "BaseScene.hpp"
 
 // manager classes
+#include "SystemManager.hpp"
 #include "InputManager.hpp"
 #include "SceneManager.hpp"
 #include "SoundManager.hpp"
 #include "ResourceManager.hpp"
 
 // core engine classes
+#include "Settings.hpp"
 #include "Game.hpp"
 
-#include "JSONUtilities.hpp"
 #include "Tetramino.hpp"
 #include "Field.hpp"
 
 #include "GUI.hpp"
-#include "Settings.hpp"
 
 // scene classes
 #include "scene_MainMenu.hpp"

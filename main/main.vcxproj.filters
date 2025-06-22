@@ -40,6 +40,9 @@
     <Filter Include="Header Files\Managers">
       <UniqueIdentifier>{05fbaff2-749b-433e-a4d8-96f7f5393459}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Systems">
+      <UniqueIdentifier>{78b92ea4-639a-45b0-a120-83d63d686dbd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Textures\Background.png">
@@ -158,20 +161,11 @@
     <ClInclude Include="..\3rd party\json.hpp">
       <Filter>Header Files\External</Filter>
     </ClInclude>
-    <ClInclude Include="RenderComponent.hpp">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="TransformComponent.hpp">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="scene_MainMenu.hpp">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="scene_Gameplay.hpp">
       <Filter>Header Files\Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="MovementComponent.hpp">
-      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.hpp">
       <Filter>Header Files\Managers</Filter>
@@ -185,17 +179,20 @@
     <ClInclude Include="Keymap.hpp">
       <Filter>Header Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="ResourceManager.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="BaseScene.hpp">
       <Filter>Header Files\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="ResourceManager.hpp">
+      <Filter>Header Files\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSystem.hpp">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="SystemManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="GUI.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Settings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -209,9 +206,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Field.cpp">
@@ -272,6 +266,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
