@@ -18,6 +18,6 @@ private:
 public:
 	JSONFileIO(path path = path{}) :
 		_stream(std::fstream{}), _path(path) { };
-	void write_json(I_JSONSerializable& object, const path& file);
+	void write_json(const I_JSONSerializable& object, const path& file);
 	json read_json(const path& file);
 };

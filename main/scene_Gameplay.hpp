@@ -21,16 +21,10 @@ private:
 
     std::unique_ptr<sf::Texture> background;
 
-    // tetris field
-    Field *field;
-    FieldController *field_controller;
-    FieldView* field_view;
-
     AkPlayingID current_track;
 
     GameplaySceneBaseState* state;
 
-    float tetramino_fall_delay;
     virtual void bind_input() override;
 public:
     Gameplay();

@@ -43,6 +43,9 @@
     <Filter Include="Header Files\Systems">
       <UniqueIdentifier>{78b92ea4-639a-45b0-a120-83d63d686dbd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\SceneResources">
+      <UniqueIdentifier>{7a7dd932-2516-404f-930c-ccfc10f040b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\Assets\Textures\Background.png">
@@ -84,6 +87,12 @@
     </None>
     <None Include="..\3rd party\AK\SoundEngine\AkFilePackageLowLevelIO.inl">
       <Filter>Source Files\External</Filter>
+    </None>
+    <None Include="resources.json">
+      <Filter>Resource Files\SceneResources</Filter>
+    </None>
+    <None Include="..\Assets\SceneResources\Mesopotamia.json">
+      <Filter>Resource Files\SceneResources</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -188,8 +197,26 @@
     <ClInclude Include="BaseSystem.hpp">
       <Filter>Header Files\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="GridComponents.hpp">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsSystem.hpp">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="VisualComponents.hpp">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicComponents.hpp">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.hpp">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockSpawnSystem.hpp">
+      <Filter>Header Files\Systems</Filter>
+    </ClInclude>
     <ClInclude Include="SystemManager.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Systems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -272,6 +299,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SystemManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BlockSpawnSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

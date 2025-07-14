@@ -1,6 +1,6 @@
 #include "Includes.hpp"
 
-void JSONFileIO::write_json(I_JSONSerializable& object, const path& file)
+void JSONFileIO::write_json(const I_JSONSerializable& object, const path& file)
 {
 	auto full_path = _path / file;
 	_stream.open(

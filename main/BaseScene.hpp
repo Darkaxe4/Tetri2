@@ -3,6 +3,7 @@
 struct RenderObject
 {
 	const sf::Drawable* drawable;
+	const sf::RenderStates* states;
 	int z_index;
 	bool operator < (const RenderObject& other) const {
 		return z_index < other.z_index;
@@ -17,6 +18,7 @@ protected:
 
 	std::vector<RenderObject> render_queue;
 	entt::registry entity_registry;
+	entt::dispatcher dispatcher;
 	std::map<std::string, sf::Sprite*> sprite_registry;
 
 	tgui::Group::Ptr gui;
@@ -29,8 +31,10 @@ public:
 	inline const int get_index() const { return index; }
 	inline auto get_gui() { return gui; }
 	virtual void unload() = 0;
-	void add_drawable(const sf::Drawable& drawable, int z_index);
+	void add_drawable(const sf::Drawable& drawable, int z_index, const sf::RenderStates& states=sf::RenderStates::Default);
+	void  remove_drawable(const sf::Drawable& drawable);
 	inline auto& get_registry() { return entity_registry; }
+	inline auto& get_dispatcher() { return dispatcher; }
 	virtual void update(sf::Time elapsed_time) = 0;
 	void render(sf::RenderTarget& target, const sf::RenderStates& states);
 	~BaseScene(); 

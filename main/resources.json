@@ -1,0 +1,31 @@
+{
+  "textures": [
+    {
+      "name": "background",
+      "path": "../Assets/Textures/Background.png",
+      "type": "texture"
+    },
+    {
+      "name": "block_atlas",
+      "path": "../Assets/Textures/BlockAtlas.png",
+      "type": "texture"
+    },
+    {
+      "name": "field",
+      "path": "../Assets/Textures/Field.png",
+      "type": "texture"
+    }
+  ],
+  "soundbanks": [
+    {
+      "name": "init",
+      "path": "../Assets/SFX/Init.bnk",
+      "type": "soundbank"
+    },
+    {
+      "name": "mesopotamia_tracks",
+      "path": "../Assets/SFX/Mesopotamia_tracks.bnk",
+      "type": "soundbank"
+    }
+  ]
+}

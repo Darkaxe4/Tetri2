@@ -29,5 +29,6 @@ public:
 
 	inline const auto& video_modes() { return _fullscreen_modes; }
 
+	inline const auto& video_mode() { return _fullscreen_modes[_video_mode]; }
 };
 

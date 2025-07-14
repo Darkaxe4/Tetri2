@@ -32,6 +32,7 @@ void SceneManager::load_scene(std::string_view scene_name)
 	{
 		current_scene = search->second;
 		current_scene->load();
+		Game::get_system_manager().load_systems();
 
 		if (auto scene_gui = gui->get<tgui::Group>(scene_name.data()))
 			scene_gui->get<tgui::Group>(scene_name.data())->setVisible(true);

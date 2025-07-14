@@ -20,6 +20,7 @@ const int TetraminoTypes[7][4] =
 	1, 3, 2, 5, //T
 };
 
+/*
 struct Tetramino
 {
 	Color color;
@@ -34,3 +35,4 @@ struct Tetramino
 
 	void generate_tetramino();
 };
+*/

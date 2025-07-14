@@ -38,18 +38,25 @@
 #include <fstream>
 #include <functional>
 #include <iostream>
+#include <random>
 
 
 #include "JSONUtilities.hpp"
 
 // components
+#include "GridComponents.hpp"
+#include "MusicComponents.hpp"
+#include "VisualComponents.hpp"
 
 
+#include "Tetramino.hpp"
 
 
 // systems
 #include "BaseSystem.hpp"
-
+#include "PhysicsSystem.hpp"
+#include "RenderSystem.hpp"
+#include "BlockSpawnSystem.hpp"
 #include "BaseScene.hpp"
 
 // manager classes
@@ -63,7 +70,6 @@
 #include "Settings.hpp"
 #include "Game.hpp"
 
-#include "Tetramino.hpp"
 #include "Field.hpp"
 
 #include "GUI.hpp"

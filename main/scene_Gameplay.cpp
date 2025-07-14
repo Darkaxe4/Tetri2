@@ -3,19 +3,13 @@
 void Gameplay::bind_input()
 {
     Game::get_input_manager().subscribe("back", [this] { this->state->process_back(); });
-    Game::get_input_manager().subscribe("left", [this] { this->field_controller->move_active(-1, 0); });
-    Game::get_input_manager().subscribe("right", [this] { this->field_controller->move_active(1, 0); });
 
 }
 
 Gameplay::Gameplay() :
     BaseScene(1),
     background(new sf::Texture()),
-    field(nullptr),
-    field_controller(nullptr),
-    field_view(nullptr),
     current_track(),
-    tetramino_fall_delay(0.f),
     state(new StateRunning{this})
 {
 }
@@ -29,12 +23,16 @@ bool Gameplay::load()
         return true;
     }
 
-    if (not background->loadFromFile(AssetPath + "\\Textures\\Background.png"))
-        return false;
+    Game::get_resource_manager().load_resources(AssetPath + "\\SceneResources\\Mesopotamia.json");
 
-    auto background_sprite = new sf::Sprite(*background);
+
+    /*auto background_sprite = new sf::Sprite(*background);
     sprite_registry.emplace(std::make_pair("background", background_sprite));
-    add_drawable(*background_sprite, 0);
+    add_drawable(*background_sprite, 0);*/
+
+    auto background_entity = entity_registry.create();
+    entity_registry.emplace<RenderComponent>(background_entity, Game::get_resource_manager().get_texture("background"), 0);
+    on_render_component_added(entity_registry, background_entity);
 
     // gui initialization
     gui->loadWidgetsFromFile(AssetPath + "\\GUI_forms\\" + gameplay_scene + ".txt");
@@ -50,24 +48,10 @@ bool Gameplay::load()
 
     current_track = Game::get_sound_manager().post_event(L"Track_3_event");
 
-    // init tetris field (model, controller, view)
-    field = new Field();
-    field_controller = new FieldController(*field);
-    field_view = new FieldView(*field);
-
-    field_controller->new_next(Tetramino());
-    field_controller->new_active(Tetramino());
+    auto field = entity_registry.create();
+    entity_registry.emplace<Grid>(field, Grid{ 10, 20 });
 
     bind_input();
-    
-    field_view->set_back_texture(AssetPath + "\\Textures\\Mesopotamia_grid.png");
-    field_view->set_palette(AssetPath + "\\Textures\\Mesopotamia_bricks.png");
-
-    field_view->setPosition({ 580.f, 64.f });
-
-    field_view->prerender_tetramino(field->get_active());
-
-    add_drawable(*field_view, 1);
 
     set_state(new StateRunning{ this });
 

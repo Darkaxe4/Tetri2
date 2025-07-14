@@ -16,7 +16,7 @@ void Settings::set_value(uint field, uint value)
 			_max_framerate = std::min(value, 360u);
 			break;
 		case 4u:
-			_video_mode = std::min(size_t(value), sf::VideoMode::getFullscreenModes().size());
+			_video_mode = std::min(size_t(value), sf::VideoMode::getFullscreenModes().size() - 1);
 			break;
 	}
 }

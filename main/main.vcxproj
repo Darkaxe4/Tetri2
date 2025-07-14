@@ -32,9 +32,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\3rd party\AK\SoundEngine\AkFilePackageLowLevelIO.inl" />
+    <None Include="..\Assets\SceneResources\Mesopotamia.json" />
     <None Include="..\Assets\SFX\7-done-menu.ogg" />
     <None Include="..\Assets\SFX\Background.ogg" />
     <None Include="..\Assets\SFX\DJK-Dreamly-Soundscapes.ogg" />
+    <None Include="resources.json" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\Assets\Fonts\ka1.ttf" />
@@ -57,24 +59,29 @@
     <ClInclude Include="..\3rd party\entt.hpp" />
     <ClInclude Include="..\3rd party\json.hpp" />
     <ClInclude Include="BaseSystem.hpp" />
+    <ClInclude Include="BlockSpawnSystem.hpp" />
     <ClInclude Include="Field.hpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="Game.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="GridComponents.hpp" />
     <ClInclude Include="GUI.hpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClInclude>
+    <ClInclude Include="RenderSystem.hpp" />
     <ClInclude Include="Includes.hpp" />
     <ClInclude Include="InputManager.hpp" />
     <ClInclude Include="JSONUtilities.hpp" />
     <ClInclude Include="Keymap.hpp" />
+    <ClInclude Include="MusicComponents.hpp" />
+    <ClInclude Include="PhysicsSystem.hpp" />
     <ClInclude Include="ResourceManager.hpp" />
     <ClInclude Include="SceneManager.hpp" />
     <ClInclude Include="scene_Gameplay.hpp" />
@@ -84,6 +91,7 @@
     <ClInclude Include="SoundManager.hpp" />
     <ClInclude Include="SystemManager.hpp" />
     <ClInclude Include="Tetramino.hpp" />
+    <ClInclude Include="VisualComponents.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\3rd party\AK\SoundEngine\AkDefaultIOHookDeferred.cpp" />
@@ -101,11 +109,12 @@
     </ClCompile>
     <ClCompile Include="..\3rd party\AK\SoundEngine\stdafx.cpp" />
     <ClCompile Include="BaseSystem.cpp" />
+    <ClCompile Include="BlockSpawnSystem.cpp" />
     <ClCompile Include="Field.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Game.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -118,6 +127,8 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="BaseScene.cpp" />
+    <ClCompile Include="PhysicsSystem.cpp" />
+    <ClCompile Include="RenderSystem.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="scene_Gameplay.cpp" />
@@ -125,7 +136,12 @@
     <ClCompile Include="Settings.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="SystemManager.cpp" />
-    <ClCompile Include="Tetramino.cpp" />
+    <ClCompile Include="Tetramino.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Text Include="..\Assets\GUI_forms\menu.txt" />
